@@ -53,6 +53,12 @@ function auth(email, pass){
                 localStorage['email'] = email;
                 localStorage['pass'] = pass;
                 localStorage['id'] = 1;
+                localStorage['user_role'] = "Student";
+                // if(data.user.user_role_id == "1"){
+                //     localStorage['user_role'] = "Student";
+                // }else{
+                //     localStorage['user_role'] = "Teacher";
+                // }
                 localStorage['logged_in'] = true;
             }else{
                 localStorage['logged_in'] = false;
@@ -70,6 +76,7 @@ function log_out(){
     localStorage.removeItem('email');
     localStorage.removeItem('pass');
     localStorage.removeItem('id');
+    localStorage.removeItem('user_role');
     localStorage['logged_in'] = false;
     window.location.href = "index.html";
 }

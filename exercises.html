@@ -31,7 +31,7 @@
 
     </div>
     <div class="container" style="width: 100%">
-        <!-- <a class="btn btn-primary" href="topics.html" style="width: 100%; margin-bottom: 10px">Solve Exercises</a> -->
+        <a class="btn btn-primary" href="statistics.html" style="width: 100%; margin-bottom: 10px">Statistics</a>
         <button class="btn btn-primary" onclick="log_out();" style="width: 100%; margin-bottom: 100px">Log Out</button>
     </div>
 
@@ -69,25 +69,21 @@
                 window.location.replace("index.html");
             }
 
-            var url = "http://educatea.com.ar/api/v1/statistics";
+            var url = "http://educatea.com.ar/api/v1/units/" + getUrlVars().unit_id;
+            console.log(url);
             $.ajax({
                 type: "GET",
                 url: url,
                 success: function(data){
-                    html = '<h1>'+data.user.full_name+'</h1><h3>General Average: '+data.user.average+'%</h3><hr><h3>Topics</h3><br><ul>';
-                    $.each(data.topics, function(key, val){
+                    html = '<ul>';
+                    console.log(data);
+                    $.each(data, function(key, val){
                         if (val.percentage != 0) {
-                            html = html + '<li><span style="font-size: 12pt;font-weight: bold;">' + val.name + '</span><br>Average: ' + val.average + '%<br>Progress: '+val.percentage+'%</li><br>'; 
-                        };
-                    });
-                    html = html + '</ul><hr>';
-                    html = html + '<h3>Units</h3><br><ul>';
-                    $.each(data.units, function(key, val){
-                        if (val.percentage != 0) {
-                            html = html + '<li><span style="font-size: 12pt;font-weight: bold;">' + val.name + '</span><br>Average: ' + val.average + '%<br>Progress: '+val.percentage+'%</li><br>'; 
+                            html = html + '<li><a href="exercises.html?unit_id='+val.id+'">' + val.name + '</a></li>'; 
                         };
                     });
                     html = html + '</ul>';
+                    console.log(html);
                     $(html).appendTo('#container');
                 },
                 error: error,

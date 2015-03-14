@@ -17,9 +17,6 @@
     <link href="css/style-responsive.css" rel="stylesheet" />
 </head>
 
-
-
-
 <body>
     <header class="header-frontend">
         <div class="navbar navbar-default navbar-static-top">
@@ -97,7 +94,11 @@
 
         $(document).ready(function(){
             if(is_logged_in()){
-                window.location.replace("statistics.html");
+                if(localStorage['user_role'] == "Student"){
+                    window.location.replace("statistics.html");
+                }else{
+                    window.location.replace("teacher.html");
+                }
             }
         });
 
@@ -115,11 +116,19 @@
             pass = $('#pass').val();
             auth(email, pass);
             if(is_logged_in()){
-                window.location.href = "statistics.html";
+                if(localStorage['user_role'] == "Student"){
+                    window.location.href = "statistics.html";
+                }else{
+                    window.location.href = "teacher.html";
+                }
             }else{
                 setTimeout(function () {
                     if(localStorage['logged_in'] == 'true'){
-                    window.location.href = "statistics.html";
+                        if(localStorage['user_role'] == "Student"){
+                            window.location.href = "statistics.html";
+                        }else{
+                            window.location.href = "teacher.html";
+                        }
                     }else{
                         $('#invalid').show();
                     }
