@@ -94,15 +94,6 @@
     <script src="js/common-scripts.js"></script>
     <script src="js/revulation-slide.js"></script>
     <script>
-//        $.blockUI({ css: {
-//            border: 'none',
-//            padding: '15px',
-//            backgroundColor: '#000',
-//            '-webkit-border-radius': '10px',
-//            '-moz-border-radius': '10px',
-//            opacity: .5,
-//            color: '#fff'
-//        } });
 
         $(document).ready(function(){
             if(is_logged_in()){
@@ -111,13 +102,29 @@
         });
 
         function sign_in(){
+           $.blockUI({ css: {
+               border: 'none',
+               padding: '15px',
+               backgroundColor: '#000',
+               '-webkit-border-radius': '10px',
+               '-moz-border-radius': '10px',
+               opacity: .5,
+               color: '#fff'
+           } });
             email = $('#email').val();
             pass = $('#pass').val();
             auth(email, pass);
             if(is_logged_in()){
                 window.location.href = "statistics.html";
             }else{
-                $('#invalid').show();
+                setTimeout(function () {
+                    if(localStorage['logged_in'] == 'true'){
+                    window.location.href = "statistics.html";
+                    }else{
+                        $('#invalid').show();
+                    }
+                    done();
+                }, 1000);
             }
         }
 
