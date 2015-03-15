@@ -75,7 +75,7 @@
                     html = '<div class="row product-list">';
                     console.log(data);
                     $.each(data.exercises.sort(sortJsonName), function(key, val){
-                        html = html + '<a href="exercises.html?unit_id='+val.id+'"><div class="col-md-4"><section class="panel"><div class="panel-body text-center"><h2><a href="exercises.html?unit_id='+val.id+'" class="pro-title">' + val.name + '</a></h2></div></section></div></a>';
+                        html = html + '<a href="exercises.html?unit_id='+val.id+'"><div class="col-md-4"><section class="panel"><div class="panel-body text-center"><h2><a href="solve.html?exercise_id='+val.id+'" class="pro-title">' + val.name + '</a></h2></div></section></div></a>';
                     });
                     html = html + '</ul>';
                     $(html).appendTo('#container');
