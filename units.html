@@ -21,9 +21,9 @@
     <header class="header-frontend">
         <div class="navbar navbar-default navbar-static-top">
             <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html"><img src="img/logo_aa2.png"></a>
-                </div>
+                <div class="navbar-header" style="height: 70px;">
+ <div style="margin-left: auto; margin-right: auto; width: 50%; margin-top:10px;">
+                        <img src="img/logo_aa2.png"></div>                </div>
             </div>
         </div>
     </header>
@@ -31,20 +31,17 @@
 
     </div>
     <div class="container" style="width: 100%">
-        <a class="btn btn-primary" href="statistics.html" style="width: 100%; margin-bottom: 10px">Statistics</a>
+        <a class="btn btn-danger" href="statistics.html" style="width: 100%; margin-bottom: 10px">Statistics</a>
         <button class="btn btn-primary" onclick="log_out();" style="width: 100%; margin-bottom: 100px">Log Out</button>
     </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-sm-3"></div>
-                <div class="col-lg-5 col-sm-5"></div>
-                <div class="col-lg-3 col-sm-3 col-lg-offset-1" style="text-align: center">
-                    2015 © Educatea.
-                </div>
-            </div>
-        </div>
+     <footer class="site-footer" style="z-index: 1000; position:static; bottom:0px;">
+      <div class="text-center">
+        2015 © Educatea.
+        <a href="#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+        </a>
+      </div>
     </footer>
 
     <script src="js/jquery.js"></script>
@@ -74,14 +71,14 @@
                 type: "GET",
                 url: url,
                 success: function(data){
-                    html = '<ul>';
+                    html = '<div class="row product-list">';
                     console.log(data);
                     $.each(data, function(key, val){
                         if (val.percentage != 0) {
-                            html = html + '<li><a href="exercises.html?unit_id='+val.id+'">' + val.name + '</a></li>'; 
+                            html = html + '<a href="exercises.html?unit_id='+val.id+'"><div class="col-md-4"><section class="panel"><div class="pro-img-box"><img src="'+ val.image.url+'" alt=""><a href="exercises.html?unit_id='+val.id+'" class="adtocart"><i class="fa fa-pencil"></i></a></div><div class="panel-body text-center"><h4><a href="exercises.html?unit_id='+val.id+'"" class="pro-title">' + val.name + '</a></h4></div></section></div></a>'; 
                         };
                     });
-                    html = html + '</ul>';
+                    html = html + '</div>';
                     console.log(html);
                     $(html).appendTo('#container');
                 },
