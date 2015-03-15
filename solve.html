@@ -75,6 +75,9 @@
                 type: "GET",
                 url: url,
                 success: function(data){
+                    console.log(data);
+                    model_name = data.model_name;
+                    values = data.values;
                     html = '<h3>'+data.generate_text+'</h3><ul>';
                     $.each(data.answers, function(key, val){
                         html = html + '<li><a class="btn btn-info" onclick="solve('+val+')">' + val + '</a></li>';
@@ -90,21 +93,15 @@
             });
         });
         function solve (ans) {
-            console.log(ans);
-            var url = "http://educatea.com.ar/api/v1/solve"
+            var url = "http://educatea.com.ar/api/v1/exercises/solve"
             $.ajax({
                 dataType: "json",
-                data: { answer: ans, iteration: "1", level: "3", ex: "AdditionAndSubtraction", values: [-18,19,18] },
-                type: "GET",
+                data: { answer: ans, iteration: "1", level: "3", exercise: model_name, values: values },
+                type: "POST",
                 url: url,
                 success: function(data){
-                    console.log(data);
-                    html = '<h3>'+data.generate_text+'</h3><ul>';
-                    $.each(data.answers, function(key, val){
-                        html = html + '<li><a class="btn btn-info" onclick="solve('+val+')">' + val + '</a></li>';
-                    });
-                    html = html + '</ul>';
-                    $(html).appendTo('#container');
+                    $('#container').empty();
+                    $(data).appendTo('#container');
                 },
                 error: error,
                 timeout: timeout,
