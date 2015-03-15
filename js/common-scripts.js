@@ -53,12 +53,11 @@ function auth(email, pass){
                 localStorage['email'] = email;
                 localStorage['pass'] = pass;
                 localStorage['id'] = 1;
-                localStorage['user_role'] = "Student";
-                // if(data.user.user_role_id == "1"){
-                //     localStorage['user_role'] = "Student";
-                // }else{
-                //     localStorage['user_role'] = "Teacher";
-                // }
+                if(data.user.user_role_id == "1"){
+                    localStorage['user_role'] = "Teacher";
+                }else{
+                    localStorage['user_role'] = "Student";
+                }
                 localStorage['logged_in'] = true;
             }else{
                 localStorage['logged_in'] = false;
