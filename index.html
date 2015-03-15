@@ -18,16 +18,18 @@
 </head>
 
 <body>
-    <header class="header-frontend">
+     <header class="header-frontend">
         <div class="navbar navbar-default navbar-static-top">
             <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html"><img src="img/logo_aa2.png"></a>
-                </div>
+                <div class="navbar-header" style="height: 70px;">
+ <div style="margin-left: auto; margin-right: auto; width: 50%; margin-top:10px;">
+                        <img src="img/logo_aa2.png"></div>                </div>
             </div>
         </div>
     </header>
     <div class="container" style="width: 100%">
+   
+
   <div class="row">
     <div class="col-lg-8 col-sm-12 col-lg-offset-2 address">
     
@@ -49,10 +51,10 @@
 
     </div>
 
-  <form onsubmit="sign_in();return false;" class="form-signin">
-    <h2 class="form-signin-heading">Sign in</h2>
+  <form onsubmit="sign_in();return false;" class="form-signin" style="margin-bottom:200px;">
+    <h2 class="form-signin-heading">WELCOME</h2>
     <div class="login-wrap">
-    <input autofocus="autofocus" class="form-control" id="email" placeholder="Email" required="required" type="email">
+    <input autofocus="autofocus" class="form-control" id="email" placeholder="Email" required="required" type="email" style="margin-bottom:15px;">
     <input autocomplete="off" class="form-control" id="pass" placeholder="Password" required="required" type="password">
               </span>
       </label>
@@ -63,16 +65,13 @@
 </div>
 </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-sm-3"></div>
-                <div class="col-lg-5 col-sm-5"></div>
-                <div class="col-lg-3 col-sm-3 col-lg-offset-1" style="text-align: center">
-                    2015 © Educatea.
-                </div>
-            </div>
-        </div>
+    <footer class="site-footer" style="z-index: 1000;">
+      <div class="text-center">
+        2015 © Educatea.
+        <a href="#" class="go-top">
+          <i class="fa fa-angle-up"></i>
+        </a>
+      </div>
     </footer>
 
     <script src="js/jquery.js"></script>
