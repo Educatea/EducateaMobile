@@ -59,7 +59,7 @@
     <script src="js/loading.js"></script>
     <script src="js/common-scripts.js"></script>
     <script src="js/revulation-slide.js"></script>
-    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
     <script>
         function sortJsonName(a,b){
             return a.order > b.order ? 1 : -1;
@@ -78,10 +78,16 @@
                     values = data.values;
                     html = '<ul class="breadcrumb" style="text-align: center;"><li><h2>'+data.generate_text+'</h2></li></ul></div><br><div style="margin-left:10%;">';
                     $.each(data.answers, function(key, val){
-                        html = html + '<a class="btn btn-info btn-lg" style="margin-right:10px; width:20%;" onclick="solve('+val+')">' + val + '</a>';
+                        html = html + '<a class="btn btn-info btn-lg" style="margin-right:10px; width:20%;" onclick="solve(\''+val+'\')">' + val + '</a>';
                     });
                     html = html + '</div><br><br>';
                     $(html).appendTo('#container');
+                    (function () {
+                      var script = document.createElement("script");
+                      script.type = "text/javascript";
+                      script.src  = "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+                      document.getElementsByTagName("head")[0].appendChild(script);
+                    })();
                 },
                 error: error,
                 timeout: timeout,
@@ -102,6 +108,7 @@
                     $('<ul class="breadcrumb" style="text-align: center;"><li><h2>'+data+'</h2></li></ul></div><br>').appendTo('#container');
                     $("h3").css("max-width", "80%").css("margin-left","10%");
                     $("h1").css("font-size", "40px");
+                    MathJax.Hub.Typeset()
                 },
                 error: error,
                 timeout: timeout,
